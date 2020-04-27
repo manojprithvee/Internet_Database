@@ -5,6 +5,8 @@ class main:
     def __init__(self):
         sql = input("Enter your Query: ")
         # sql = 'select "//section/div[1]/div[2]/div/div/div/div[1]/span/span","//section/div[1]/div[2]/div/div/div/h1/text()" from html where url in ("https://www.lttstore.com/products/ltt-stealth-hoodie") and selector=xpath'
+        # sql = 'select ".ProductMeta__Price > span:nth-child(1)",".ProductMeta__Title" from html where url in (' \
+        #       '"https://www.lttstore.com/products/ltt-stealth-hoodie") and selector=css '
         while(sql!=""):
             try:
                 parsed_sql=parse(sql);
