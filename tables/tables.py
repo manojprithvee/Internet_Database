@@ -6,7 +6,7 @@ from tables.yml import Yml
 
 
 def tableclass(sql):
-    print(sql)
+    # print(sql)
     if sql["from"] == "html":
         return Html(sql)
     elif sql["from"] == "jshtml":

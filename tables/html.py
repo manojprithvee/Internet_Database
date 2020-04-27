@@ -21,7 +21,7 @@ class Html:
                     self.selectors = list(map(lambda x: x["value"], parsed_sql["select"]))
                 else:
                     raise Exception("SelectorNotPresent")
-            print(self.selectors)
+            # print(self.selectors)
             if "where" in parsed_sql:
                 if "and" in parsed_sql["where"]:
                     self.urls = []
@@ -52,13 +52,14 @@ class Html:
                 raise Exception("NotAndStatement")
         else:
             raise Exception("NotSelectStatement")
-        print(self.selector_type)
-        print(self.urls)
-        print(self.selectors)
+        # print(self.selector_type)
+        # print(self.urls)
+        # print(self.selectors)
         if self.selector_type == "css":
             self.selectors = map(lambda x: GenericTranslator().css_to_xpath(x), self.selectors)
-        arr = [*map(lambda x: self.download(x, self.selectors), self.urls)]
-        print(json.dumps(arr))
+
+    def run(self):
+        return [*map(lambda x: self.download(x, self.selectors), self.urls)]
 
     def download(self, url, xpaths):
         request = requests.get(url)
