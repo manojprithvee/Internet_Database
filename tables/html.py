@@ -1,10 +1,10 @@
-import json
-
 import lxml
 import lxml.html as lh
 import requests
 from cssselect import GenericTranslator
+import validators
 
+from tables.tables import *
 
 
 class Html:
@@ -31,6 +31,9 @@ class Html:
                             if inexpression[0] == "url":
                                 if type(inexpression[1]) == list:
                                     self.urls += inexpression[1]
+                                elif type(inexpression[1]) == dict:
+                                    table = tableclass(parsed_sql)
+                                    self.urls += table.run();
                                 else:
                                     self.urls += [inexpression[1]]
                             if inexpression[0] != "url":
@@ -46,15 +49,17 @@ class Html:
                         raise Exception("NoUrlCondition")
                     if self.selector_type is None:
                         raise Exception("NoSelectorTypeCondition")
+                    for url in self.urls:
+                        if type(url) != str:
+                            raise Exception("MalformedUrl")
+                        if not validators.url(url):
+                            raise Exception("MalformedUrl")
                 else:
                     raise Exception("WhereNotFound")
             else:
                 raise Exception("NotAndStatement")
         else:
             raise Exception("NotSelectStatement")
-        # print(self.selector_type)
-        # print(self.urls)
-        # print(self.selectors)
         if self.selector_type == "css":
             self.selectors = map(lambda x: GenericTranslator().css_to_xpath(x), self.selectors)
 
