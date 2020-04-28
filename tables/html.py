@@ -1,10 +1,10 @@
+import urllib.parse
+
 import lxml
 import lxml.html as lh
 import requests
-from cssselect import GenericTranslator
 import validators
-
-from tables.tables import *
+from cssselect import GenericTranslator
 
 
 class Html:
@@ -32,8 +32,8 @@ class Html:
                                 if type(inexpression[1]) == list:
                                     self.urls += inexpression[1]
                                 elif type(inexpression[1]) == dict:
-                                    table = tableclass(parsed_sql)
-                                    self.urls += table.run();
+                                    table = Html(inexpression[1])
+                                    self.urls += map(lambda x: x["href"], table.run()[0][0]);
                                 else:
                                     self.urls += [inexpression[1]]
                             if inexpression[0] != "url":
@@ -49,11 +49,15 @@ class Html:
                         raise Exception("NoUrlCondition")
                     if self.selector_type is None:
                         raise Exception("NoSelectorTypeCondition")
+                    unique_list = []
                     for url in self.urls:
                         if type(url) != str:
                             raise Exception("MalformedUrl")
                         if not validators.url(url):
                             raise Exception("MalformedUrl")
+                        if url not in unique_list:
+                            unique_list.append(url)
+                    self.urls = unique_list
                 else:
                     raise Exception("WhereNotFound")
             else:
@@ -71,15 +75,21 @@ class Html:
         dom = lh.fromstring(request.text)
         outputs = []
         for xpath in xpaths:
-            raw_xpath = dom.xpath(xpath)
-            if type(raw_xpath[0]) == lxml.etree._ElementUnicodeResult:
-                if xpath.split("@")[-1] == xpath:
-                    outputs.append({'text': str(raw_xpath[0])})
+            raw_xpaths = dom.xpath(xpath)
+            temp = []
+            for raw_xpath in raw_xpaths:
+                if type(raw_xpath) == lxml.etree._ElementUnicodeResult:
+                    if xpath.split("@")[-1] == xpath:
+                        temp.append({'text': str(raw_xpath)})
+                    else:
+                        if xpath.split("@")[-1] == "href":
+                            temp.append({xpath.split("@")[-1]: urllib.parse.urljoin(url, str(raw_xpath))})
+                        else:
+                            temp.append({xpath.split("@")[-1]: str(raw_xpath)})
                 else:
-                    outputs.append({xpath.split("@")[-1]: str(raw_xpath[0])})
-            else:
-                output = {'text': str(raw_xpath[0].text)}
-                for i in raw_xpath[0].attrib.keys():
-                    output[i] = raw_xpath[0].attrib.get(i)
-                outputs.append(output)
+                    output = {'text': str(raw_xpath.text)}
+                    for i in raw_xpath.attrib.keys():
+                        output[i] = raw_xpath.attrib.get(i)
+                    temp.append(output)
+            outputs.append(temp)
         return outputs
