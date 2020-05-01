@@ -8,7 +8,7 @@ from cssselect import GenericTranslator
 
 
 class Html:
-    def __init__(self, parsed_sql,sc):
+    def __init__(self, parsed_sql, sc):
         self.patrsed_sql = parsed_sql
         if "select" in parsed_sql:
             if type(parsed_sql["select"]) == dict:
@@ -32,7 +32,7 @@ class Html:
                                 if type(inexpression[1]) == list:
                                     self.urls += inexpression[1]
                                 elif type(inexpression[1]) == dict:
-                                    table = Html(inexpression[1],sc)
+                                    table = Html(inexpression[1], sc)
                                     self.urls += map(lambda x: x["href"], table.run(sc)[0])
                                 else:
                                     self.urls += [inexpression[1]]
@@ -63,21 +63,22 @@ class Html:
         if self.selector_type == "css":
             self.selectors = map(lambda x: GenericTranslator().css_to_xpath(x), self.selectors)
 
-    def run(self,sc):
+    def run(self, sc):
         listing = sc.parallelize(self.urls, 5)
         dirdd = listing.distinct()
-        outputs=dirdd.map(lambda x: self.download(x, self.selectors)).collect()
-        arr=[[] for j in self.selectors]
+        outputs = dirdd.map(lambda x: self.download(x, self.selectors)).collect()
+        arr = [[] for j in self.selectors]
         for output in outputs:
             for i in range(len(self.selectors)):
-                if type(output[i])==list:
-                    arr[i]+=output[i]
+                if type(output[i]) == list:
+                    arr[i] += output[i]
                 else:
                     arr[i].append(output[i])
 
         return arr
 
-    def download(self, url, xpaths):
+    @staticmethod
+    def download(url, xpaths):
         request = requests.get(url)
         dom = lh.fromstring(request.text)
         outputs = []

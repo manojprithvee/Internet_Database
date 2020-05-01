@@ -4,8 +4,8 @@ import time
 import lxml
 import lxml.html as lh
 import requests
-from pyspark import SparkContext
 from moz_sql_parser import parse
+from pyspark import SparkContext
 
 sc = SparkContext()
 lists = ['https://www.lttstore.com/products/ltt-stealth-hoodie',
@@ -43,7 +43,17 @@ def download(url, xpaths):
 
 x_path = ["/html/body/div[6]/main/div[1]/section/div[1]/div[2]/div/div/div/div[1]/span/span",
           "/html/body/div[6]/main/div[1]/section/div[1]/div[2]/div/div/div/h1/text()"]
-sql = parse('select "/html/body/div[6]/main/div[1]/section/div[1]/div[2]/div/div/div/div[1]/span/span","/html/body/div[6]/main/div[1]/section/div[1]/div[2]/div/div/div/h1/text()" from html where url in ("https://www.lttstore.com/products/ltt-stealth-hoodie", "https://www.lttstore.com/products/cpu-deconstructed-t-shirt", "https://www.lttstore.com/products/hard-drive-shirt", "https://www.lttstore.com/products/gpu-t-shirt", "https://www.lttstore.com/products/usb-c-t-shirt", "https://www.lttstore.com/products/ram-t-shirt", "https://www.lttstore.com/products/constellations", "https://www.lttstore.com/products/fan-t-shirt", "https://www.lttstore.com/products/mystery-t-shirt", "https://www.lttstore.com/products/ltt-hat", "https://www.lttstore.com/products/underwear-3-pack", "https://www.lttstore.com/products/techlinked-tee", "https://www.lttstore.com/products/techlinked-hat") and selector=xpath')
+sql = parse('select "/html/body/div[6]/main/div[1]/section/div[1]/div[2]/div/div/div/div[1]/span/span",'
+            '"/html/body/div[6]/main/div[1]/section/div[1]/div[2]/div/div/div/h1/text()" from html where url in ('
+            '"https://www.lttstore.com/products/ltt-stealth-hoodie", '
+            '"https://www.lttstore.com/products/cpu-deconstructed-t-shirt", '
+            '"https://www.lttstore.com/products/hard-drive-shirt", "https://www.lttstore.com/products/gpu-t-shirt", '
+            '"https://www.lttstore.com/products/usb-c-t-shirt", "https://www.lttstore.com/products/ram-t-shirt", '
+            '"https://www.lttstore.com/products/constellations", "https://www.lttstore.com/products/fan-t-shirt", '
+            '"https://www.lttstore.com/products/mystery-t-shirt", "https://www.lttstore.com/products/ltt-hat", '
+            '"https://www.lttstore.com/products/underwear-3-pack", '
+            '"https://www.lttstore.com/products/techlinked-tee", "https://www.lttstore.com/products/techlinked-hat") '
+            'and selector=xpath')
 start_time = time.time()
 dirdd = listing.distinct()
 arr = dirdd.map(lambda x: download(x, x_path)).collect()
