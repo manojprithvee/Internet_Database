@@ -8,8 +8,8 @@ from cssselect import GenericTranslator
 
 
 class Html:
-    def __init__(self, parsed_sql):
-        self.patrsed_sql = parsed_sql;
+    def __init__(self, parsed_sql,sc):
+        self.patrsed_sql = parsed_sql
         if "select" in parsed_sql:
             if type(parsed_sql["select"]) == dict:
                 if "value" in parsed_sql["select"]:
@@ -21,7 +21,7 @@ class Html:
                     self.selectors = list(map(lambda x: x["value"], parsed_sql["select"]))
                 else:
                     raise Exception("SelectorNotPresent")
-            # print(self.selectors)
+
             if "where" in parsed_sql:
                 if "and" in parsed_sql["where"]:
                     self.urls = []
@@ -32,8 +32,8 @@ class Html:
                                 if type(inexpression[1]) == list:
                                     self.urls += inexpression[1]
                                 elif type(inexpression[1]) == dict:
-                                    table = Html(inexpression[1])
-                                    self.urls += map(lambda x: x["href"], table.run()[0][0]);
+                                    table = Html(inexpression[1],sc)
+                                    self.urls += map(lambda x: x["href"], table.run(sc)[0][0])
                                 else:
                                     self.urls += [inexpression[1]]
                             if inexpression[0] != "url":
@@ -49,15 +49,11 @@ class Html:
                         raise Exception("NoUrlCondition")
                     if self.selector_type is None:
                         raise Exception("NoSelectorTypeCondition")
-                    unique_list = []
                     for url in self.urls:
                         if type(url) != str:
                             raise Exception("MalformedUrl")
                         if not validators.url(url):
                             raise Exception("MalformedUrl")
-                        if url not in unique_list:
-                            unique_list.append(url)
-                    self.urls = unique_list
                 else:
                     raise Exception("WhereNotFound")
             else:
@@ -67,8 +63,11 @@ class Html:
         if self.selector_type == "css":
             self.selectors = map(lambda x: GenericTranslator().css_to_xpath(x), self.selectors)
 
-    def run(self):
-        return [*map(lambda x: self.download(x, self.selectors), self.urls)]
+    def run(self,sc):
+        listing = sc.parallelize(self.urls, 5)
+        dirdd = listing.distinct()
+        return dirdd.map(lambda x: self.download(x, self.selectors)).collect()
+        # return [*map(lambda x: self.download(x, self.selectors), self.urls)]
 
     def download(self, url, xpaths):
         request = requests.get(url)
