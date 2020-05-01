@@ -64,7 +64,7 @@ class Html:
             self.selectors = map(lambda x: GenericTranslator().css_to_xpath(x), self.selectors)
 
     def run(self, sc):
-        listing = sc.parallelize(self.urls, 5)
+        listing = sc.parallelize(self.urls)
         dirdd = listing.distinct()
         outputs = dirdd.map(lambda x: self.download(x, self.selectors)).collect()
         arr = [[] for j in self.selectors]

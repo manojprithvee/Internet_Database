@@ -8,6 +8,7 @@ from tables.tables import *
 class Main:
     def __init__(self):
         sc = SparkContext()
+        # print(sc.defaultParallelism)
         sql = input("Enter your Query: ")
         # sql = 'select "//section/div[1]/div[2]/div/div/div/div[1]/span/span","//section/div[1]/div[' \
         #       '2]/div/div/div/h1/text()" from html where url in (' \
