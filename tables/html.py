@@ -33,7 +33,7 @@ class Html:
                                     self.urls += inexpression[1]
                                 elif type(inexpression[1]) == dict:
                                     table = Html(inexpression[1],sc)
-                                    self.urls += map(lambda x: x["href"], table.run(sc)[0][0])
+                                    self.urls += map(lambda x: x["href"], table.run(sc)[0])
                                 else:
                                     self.urls += [inexpression[1]]
                             if inexpression[0] != "url":
@@ -66,8 +66,16 @@ class Html:
     def run(self,sc):
         listing = sc.parallelize(self.urls, 5)
         dirdd = listing.distinct()
-        return dirdd.map(lambda x: self.download(x, self.selectors)).collect()
-        # return [*map(lambda x: self.download(x, self.selectors), self.urls)]
+        outputs=dirdd.map(lambda x: self.download(x, self.selectors)).collect()
+        arr=[[] for j in self.selectors]
+        for output in outputs:
+            for i in range(len(self.selectors)):
+                if type(output[i])==list:
+                    arr[i]+=output[i]
+                else:
+                    arr[i].append(output[i])
+
+        return arr
 
     def download(self, url, xpaths):
         request = requests.get(url)
