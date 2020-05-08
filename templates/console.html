@@ -6,34 +6,60 @@
     <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
     <style>
-        .query{
-            resize:none;
+        .query {
+            resize: none;
         }
 
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script crossorigin="anonymous"
+            integrity="sha256-qCCcAHv/Z0u7K344shsZKUF2NR+59ooA3XWRj0LPGIQ="
+            src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/ace.min.js"></script>
+    <script src="/static/js/ace_textarea.js"></script>
+
+    <script crossorigin="anonymous"
+            integrity="sha256-yo3yyy+oriumKnUWNinEN5BSxKxsh6/7IM0pbSouSEw="
+            src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/theme-dracula.min.js"></script>
+    <script crossorigin="anonymous"
+            integrity="sha256-DSIF67Xyb2rBWl+NXCl8QvwYWPhaWJ1mr19XzP5BHr4="
+            src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/mode-sql.min.js"></script>
+    <script crossorigin="anonymous"
+            integrity="sha256-oMH6MIx8AGl0OseaL8vGcdSb9ons1Jprkf4xXAyzvNc="
+            src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/mode-json.min.js"></script>
+    <script crossorigin="anonymous"
+            integrity="sha256-KFXf4u8zJlXEUJckmmZbITzYENXMuqPqyrlscCKeqFU="
+            src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/ext-language_tools.min.js"></script>
 </head>
 <body>
 <div class="container">
     <h1>Console</h1>
-    <label class="col" for="query">Query:</label>
-    <textarea class="col-md-6 query" id="query" name="query" rows="5"></textarea><br>
+
+    <label class="col" for="query-text">Query:</label>
+    <textarea class="col-md-6 query" id="query-text" name="query" rows="5"></textarea><br>
     <label class="col" for="output">Output:</label>
     <textarea class="col-md-6" id="output" name="output" rows="15"></textarea>
     <button id="query-submit">submit</button>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script>
-        $('document').ready(function(){
-            $('#query-submit').on('click', function(){
-                var word = $('#query').val();
-                if ($.trim(word) != ''){
-                    $.get('/api', {api: word}, function(data){
-                        $('#output').val(JSON.stringify(data));
-                    });
-                };
-            });
+    $(document).ready(function () {
+        $('#query-text').ace({theme: 'dracula', lang: 'sql', enableBasicAutocompletion: true});
+        $('#query-text').data('ace').editor.ace.setOptions({
+            enableLiveAutocompletion: true
+        });
+        var output = $('#output').ace({theme: 'dracula', lang: 'json'});
+        $('#query-submit').on('click', function () {
+            var word = $('#query-text').val();
+            $('#output').val('');
+            if ($.trim(word) != '') {
+                $.get('/api', {api: word}, function (data) {
+                    $('#output').val(JSON.stringify(data, null, '\t'));
+                    $('#output').data('ace').editor.ace.session.setValue(JSON.stringify(data, null, '\t'))
+                });
+            }
+
         });
 
+    });
 </script>
 </body>
 </html>

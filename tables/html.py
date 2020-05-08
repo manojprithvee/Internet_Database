@@ -6,6 +6,8 @@ import requests
 import validators
 from cssselect import GenericTranslator
 
+from tables import tables
+
 
 class Html:
     def __init__(self, parsed_sql, sc):
@@ -32,7 +34,7 @@ class Html:
                                 if type(inexpression[1]) == list:
                                     self.urls += inexpression[1]
                                 elif type(inexpression[1]) == dict:
-                                    table = Html(inexpression[1], sc)
+                                    table = tables.tableclass(inexpression[1], sc)
                                     self.urls += map(lambda x: x["href"], table.run(sc)[0])
                                 else:
                                     self.urls += [inexpression[1]]

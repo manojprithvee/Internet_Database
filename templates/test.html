@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        $('document').ready(function () {
+            var iframe = document.getElementById('dom');
+            iframeWindow = iframe.contentWindow;
+            iframe = iframe.contentWindow || (iframe.contentDocument.document || iframe.contentDocument);
+            iframe.document.open();
+            $.get('/getweb', {url: "https://www.amazon.com/First-Princess-Make-Kit-Everything/dp/B07FPWYY79/ref=gbps_tit_m-9_475e_f3ed5ba0?smid=ATVPDKIKX0DER&pf_rd_p=5d86def2-ec10-4364-9008-8fbccf30475e&pf_rd_s=merchandised-search-9&pf_rd_t=101&pf_rd_i=15529609011&pf_rd_m=ATVPDKIKX0DER&pf_rd_r=SV2P0WC3MBKTM1WVCWCP"}, function (data) {
+                iframe.document.write(data);
+                iframe.document.close();
+                iframe.addEventListener("mouseover", (e) => {
+                    currentTarget = e.target;
+                    currentTarget.style.backgroundColor = '#219cef45';
+                    lastTarget = currentTarget;
+                });
+                iframe.addEventListener("mouseout", () => {
+                    if (lastTarget && !lastTarget.clicked) lastTarget.style.backgroundColor = null;
+                });
+                iframe.addEventListener("click", (e) => {
+                    const {target} = e;
+                    e.stopPropagation();
+                    e.preventDefault();
+                    if (target.clicked) {
+                        target.clicked = false;
+                    } else {
+                        target.clicked = true;
+                        const cloneNode = target.cloneNode(true);
+                        cloneNode.style.backgroundColor = null;
+                    }
+                });
+            });
+
+            console.log("kjbhnjnkn")
+        });
+
+    </script>
+</head>
+
+<body>
+<iframe height="900px" id="dom" width="900px"></iframe>
+</body>
+
+</html>

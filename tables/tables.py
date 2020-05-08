@@ -1,8 +1,8 @@
-from tables.html import Html
-from tables.jshtml import JsHtml
-from tables.json import Json
-from tables.xml import Xml
-from tables.yml import Yml
+from tables.html import *
+from tables.jshtml import *
+from tables.json import *
+from tables.xml import *
+from tables.yml import *
 
 
 def tableclass(sql, sc):
@@ -10,7 +10,7 @@ def tableclass(sql, sc):
     if sql["from"] == "html":
         return Html(sql, sc)
     elif sql["from"] == "jshtml":
-        return JsHtml()
+        return JsHtml(sql, sc)
     elif sql["from"] == "json":
         return Json()
     elif sql["from"] == "xml":
