@@ -41,23 +41,24 @@
 </div>
 <script>
     $(document).ready(function () {
+
         $('#query-text').ace({theme: 'dracula', lang: 'sql'});
         $('#query-text').data('ace').editor.ace.setOptions({
             enableLiveAutocompletion: true
         });
 
         var output = $('#output').ace({theme: 'dracula', lang: 'json'});
-        $('#output').data('ace').editor.ace.setReadonly(true)
         $('#query-submit').on('click', function () {
+            console.log("manojs")
             var word = $('#query-text').val();
             $('#output').val('');
-            if ($.trim(word) != '') {
+            $('#output').data('ace').editor.ace.session.setValue("");
+            if ($.trim(word) !== '') {
                 $.get('/api', {api: word}, function (data) {
                     $('#output').val(JSON.stringify(data, null, '\t'));
                     $('#output').data('ace').editor.ace.session.setValue(JSON.stringify(data, null, '\t'))
                 });
             }
-
         });
 
     });

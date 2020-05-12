@@ -1,5 +1,8 @@
+import findspark
 import moz_sql_parser
 from moz_sql_parser import parse
+
+findspark.init()
 from pyspark import SparkContext
 
 from tables.tables import *

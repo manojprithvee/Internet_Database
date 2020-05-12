@@ -26,10 +26,12 @@ def console():
 @app.route("/api")
 def sparkpi():
     sql = str(request.args.get('api', ""))
+
     if sql == "":
-        sql = 'select "//section/div[1]/div[2]/div/div/div/div[1]/span/span","//section/div[1]/div[2]/div/div/div/h1/text()" from html where url in (select "/html/body/div[6]/main/div[3]/section/div[1]/div/div/div/div/div/a/@href" from html where url in ("https://www.lttstore.com") and selector=xpath) and selector=xpath '
+        sql = 'select "//section/div[1]/div[2]/div/div/div/div[1]/span/span","//section/div[1]/div[2]/div/div/div/h1/text()" from html where url in (select "/html/body/div[6]/main/div[3]/section/div[1]/div/div/div/div/div/a/@href" from html where url in ("https://www.lttstore.com") and selector=xpath) and selector=xpath'
     try:
         parsed_sql = parse(sql)
+        print(sql)
         table = tableclass(parsed_sql, sc)
         response = table.run(sc)
     except moz_sql_parser.ParseException:

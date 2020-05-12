@@ -86,10 +86,16 @@ class JsHtml:
 
     @staticmethod
     def download(urls, xpaths):
-        driver = webdriver.PhantomJS()
+        options = webdriver.FirefoxOptions()
+        options.add_argument('-headless')
+
+        driver = webdriver.Firefox(executable_path="/Users/divakarmanoj/dev/Final Project/Python/geckodriver",
+                                   firefox_options=options)
+        # driver = webdriver.PhantomJS()
         final = []
         for url in urls:
             driver.get(url)
+            # print(driver.page_source)
             dom = lh.fromstring(driver.page_source)
             outputs = []
             for xpath in xpaths:

@@ -47,6 +47,8 @@ class Html:
                                     self.selector_type = selectorexpression[1]
                                 else:
                                     raise Exception("FoundUnknownSelectorType")
+                            elif selectorexpression[0] == "url":
+                                self.urls.append(inexpression[1])
                     if not self.urls:
                         raise Exception("NoUrlCondition")
                     if self.selector_type is None:
