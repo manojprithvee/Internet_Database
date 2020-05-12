@@ -1,0 +1,1 @@
+docker run -p 8050:8050 -v ../ads-block:/etc/splash/filters scrapinghub/splash

@@ -12,7 +12,7 @@ class Main:
     def __init__(self):
         sc = SparkContext()
         # print(sc.defaultParallelism)
-        sql = input("Enter your Query: ")
+        # sql = input("Enter your Query: ")
         # sql = 'select "//section/div[1]/div[2]/div/div/div/div[1]/span/span","//section/div[1]/div[' \
         #       '2]/div/div/div/h1/text()" from html where url in (' \
         #       '"https://www.lttstore.com/products/ltt-stealth-hoodie",' \
@@ -22,8 +22,8 @@ class Main:
         # sql='select "/html/body/div[6]/main/div[3]/section/div[1]/div/div/div/div/div/a/@href" from html where url' \
         #     ' in ("https://www.lttstore.com") and selector=xpath '
         # sql = 'select "//section/div[1]/div[2]/div/div/div/div[1]/span/span","//section/div[1]/div[' \
-        #       '2]/div/div/div/h1/text()" from html where url in (select "/html/body/div[6]/main/div[3]/section/div[' \
-        #       '1]/div/div/div/div/div/a/@href" from html where url in ("https://www.lttstore.com") and ' \
+        #       '2]/div/div/div/h1/text()" from jshtml where url in (select "/html/body/div[6]/main/div[3]/section/div[' \
+        #       '1]/div/div/div/div/div/a/@href" from jshtml where url in ("https://www.lttstore.com") and ' \
         #       'selector=xpath) and selector=xpath '
         while sql != "":
             try:

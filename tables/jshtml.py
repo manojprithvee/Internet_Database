@@ -1,10 +1,11 @@
 import urllib.parse
+import urllib.parse
 
 import lxml
 import lxml.html as lh
+import requests
 import validators
 from cssselect import GenericTranslator
-from selenium import webdriver
 
 from tables import tables
 
@@ -66,14 +67,9 @@ class JsHtml:
             self.selectors = map(lambda x: GenericTranslator().css_to_xpath(x), self.selectors)
 
     def run(self, sc):
-        partations = 20
-        if len(self.urls) <= 20:
-            partations = int(len(self.urls) / 3)
-            if (partations < 1):
-                partations = 1
-        listing = sc.parallelize(self.urls, partations)
+        listing = sc.parallelize(self.urls)
         dirdd = listing.distinct()
-        outputs = dirdd.mapPartitions(lambda x: self.download(x, self.selectors)).collect()
+        outputs = dirdd.map(lambda x: self.download(x, self.selectors)).collect()
         arr = [[] for j in self.selectors]
         for output in outputs:
             for i in range(len(self.selectors)):
@@ -81,41 +77,29 @@ class JsHtml:
                     arr[i] += output[i]
                 else:
                     arr[i].append(output[i])
-
         return arr
 
     @staticmethod
-    def download(urls, xpaths):
-        options = webdriver.FirefoxOptions()
-        options.add_argument('-headless')
-
-        driver = webdriver.Firefox(executable_path="/Users/divakarmanoj/dev/Final Project/Python/geckodriver",
-                                   firefox_options=options)
-        # driver = webdriver.PhantomJS()
-        final = []
-        for url in urls:
-            driver.get(url)
-            # print(driver.page_source)
-            dom = lh.fromstring(driver.page_source)
-            outputs = []
-            for xpath in xpaths:
-                raw_xpaths = dom.xpath(xpath)
-                temp = []
-                for raw_xpath in raw_xpaths:
-                    if type(raw_xpath) == lxml.etree._ElementUnicodeResult:
-                        if xpath.split("@")[-1] == xpath:
-                            temp.append({'text': str(raw_xpath)})
-                        else:
-                            if xpath.split("@")[-1] == "href":
-                                temp.append({xpath.split("@")[-1]: urllib.parse.urljoin(url, str(raw_xpath))})
-                            else:
-                                temp.append({xpath.split("@")[-1]: str(raw_xpath)})
+    def download(url, xpaths):
+        request = requests.get("http://localhost:8050/render.html?filters=easylist&url=" + urllib.parse.quote(url))
+        dom = lh.fromstring(request.text)
+        outputs = []
+        for xpath in xpaths:
+            raw_xpaths = dom.xpath(xpath)
+            temp = []
+            for raw_xpath in raw_xpaths:
+                if type(raw_xpath) == lxml.etree._ElementUnicodeResult:
+                    if xpath.split("@")[-1] == xpath:
+                        temp.append({'text': str(raw_xpath)})
                     else:
-                        output = {'text': str(raw_xpath.text)}
-                        for i in raw_xpath.attrib.keys():
-                            output[i] = raw_xpath.attrib.get(i)
-                        temp.append(output)
-                outputs.append(temp)
-            final.append(outputs)
-        driver.close()
-        return final
+                        if xpath.split("@")[-1] == "href":
+                            temp.append({xpath.split("@")[-1]: urllib.parse.urljoin(url, str(raw_xpath))})
+                        else:
+                            temp.append({xpath.split("@")[-1]: str(raw_xpath)})
+                else:
+                    output = {'text': str(raw_xpath.text)}
+                    for i in raw_xpath.attrib.keys():
+                        output[i] = raw_xpath.attrib.get(i)
+                    temp.append(output)
+            outputs.append(temp)
+        return outputs
