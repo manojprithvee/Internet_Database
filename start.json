@@ -1,0 +1,12 @@
+{
+  "apps": [
+    {
+      "name": "server",
+      "script": "python web.py"
+    },
+    {
+      "name": "splash",
+      "script": "docker run -p 8050:8050 -v adblock:/etc/splash/filters scrapinghub/splash"
+    }
+  ]
+}
