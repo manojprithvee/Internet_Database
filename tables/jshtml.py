@@ -12,7 +12,8 @@ from tables import tables
 
 class JsHtml:
     def __init__(self, parsed_sql, sc):
-        self.patrsed_sql = parsed_sql
+        self.parsed_sql = parsed_sql
+        print(parsed_sql)
         if "select" in parsed_sql:
             if type(parsed_sql["select"]) == dict:
                 if "value" in parsed_sql["select"]:
@@ -81,8 +82,9 @@ class JsHtml:
 
     @staticmethod
     def download(url, xpaths):
-        request = requests.get("http://localhost:8050/render.html?filters=easylist&url=" + urllib.parse.quote(url))
+        request = requests.get("http://localhost:8050/render.html?url=" + urllib.parse.quote(url))
         dom = lh.fromstring(request.text)
+        print(dom)
         outputs = []
         for xpath in xpaths:
             raw_xpaths = dom.xpath(xpath)

@@ -10,7 +10,6 @@ def tableclass(sql, sc):
     if sql["from"] == "html":
         return Html(sql, sc)
     elif sql["from"] == "jshtml":
-
         return JsHtml(sql, sc)
     elif sql["from"] == "json":
         return Json()
