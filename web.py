@@ -34,8 +34,8 @@ def sparkpi():
         print(sql)
         table = tableclass(parsed_sql, sc)
         response = table.run(sc)
-    except moz_sql_parser.ParseException:
-        print(moz_sql_parser.ParseException)
+    except Exception:
+        return ("Oops! Error in Query. Try again after correcting the Query")
     return jsonify(response)
 
 
