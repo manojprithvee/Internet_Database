@@ -12,7 +12,7 @@ def tableclass(sql, sc):
     elif sql["from"] == "jshtml":
         return JsHtml(sql, sc)
     elif sql["from"] == "json":
-        return Json()
+        return JsHtml(sql, sc)
     elif sql["from"] == "xml":
         return Xml()
     elif sql["from"] == "yml":
