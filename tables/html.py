@@ -57,8 +57,6 @@ class Html:
                     for url in self.urls:
                         if type(url) != str:
                             raise Exception("MalformedUrl")
-                        if not validators.url(url):
-                            raise Exception("MalformedUrl")
                 else:
                     raise Exception("WhereNotFound")
             else:
