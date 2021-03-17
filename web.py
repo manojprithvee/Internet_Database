@@ -23,6 +23,11 @@ def console():
     # return "Python Flask SparkPi server running. Add the 'sparkpi' route to this URL to invoke the app."
 
 
+@app.route("/healthz")
+def console():
+    return jsonify({"status": "ok"})
+
+
 @app.route("/api")
 def sparkpi():
     sql = str(request.args.get('api', ""))
