@@ -103,7 +103,7 @@ var xPathFinder = xPathFinder || (() => {
 
     copyText(XPath) {
       const hdInp = document.createElement('textarea');
-      hdInp.textContent = XPath;
+      hdInp.textContent = "select "+this.xpathlist.join(",")+" from jshtml where url in (\""+this.win.location.href+"\") and selector=xpath";
       document.body.appendChild(hdInp);
       hdInp.select();
       document.execCommand('copy');
