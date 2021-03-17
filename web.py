@@ -24,7 +24,7 @@ def console():
 
 
 @app.route("/healthz")
-def console():
+def healthz():
     return jsonify({"status": "ok"})
 
 
