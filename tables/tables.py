@@ -12,10 +12,10 @@ def tableclass(sql, sc):
     elif sql["from"] == "jshtml":
         return JsHtml(sql, sc)
     elif sql["from"] == "json":
-        return JsHtml(sql, sc)
+        return Json(sql, sc)
     elif sql["from"] == "xml":
-        return Xml()
+        return Xml(sql, sc)
     elif sql["from"] == "yml":
-        return Yml()
+        return Yml(sql, sc)
     else:
         raise Exception("TableNotSupported")
