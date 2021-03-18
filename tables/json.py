@@ -1,15 +1,10 @@
-import urllib.parse
-
-import lxml
-import lxml.html as lh
-import requests
-import json
 import validators
+from benedict import benedict
 
 from tables import tables
 
+
 class Json:
-    # select key.key.key from json where url in ("http://api.plos.org/search?q=title:DNA");
     def __init__(self, parsed_sql, sc):
         self.patrsed_sql = parsed_sql
         if "select" in parsed_sql:
@@ -25,39 +20,37 @@ class Json:
                     raise Exception("SelectorNotPresent")
 
             if "where" in parsed_sql:
-                if "and" in parsed_sql["where"]:
-                    self.urls = []
-                    for expression in parsed_sql["where"]["and"]:
-                        if "in" in expression:
-                            inexpression = expression["in"]
-                            if inexpression[0] == "url":
-                                if type(inexpression[1]) == list:
-                                    self.urls += inexpression[1]
-                                elif type(inexpression[1]) == dict:
-                                    table = tables.tableclass(inexpression[1], sc)
-                                    self.urls += map(lambda x: x["href"], table.run(sc)[0])
-                                else:
-                                    self.urls += [inexpression[1]]
-                            if inexpression[0] != "url":
-                                raise Exception("FoundUnknownExpression")
-                        if 'eq' in expression:
-                            selectorexpression = expression["eq"]
-                            if selectorexpression[0] == "url":
-                                self.urls.append(selectorexpression[1])
-                    if not self.urls:
-                        raise Exception("NoUrlCondition")
-                    for url in self.urls:
-                        if type(url) != str:
-                            raise Exception("MalformedUrl")
-                        if not validators.url(url):
-                            raise Exception("MalformedUrl")
-                else:
-                    raise Exception("WhereNotFound")
+                self.urls = []
+                for expression in parsed_sql["where"]:
+                    if "in" in expression:
+                        print(expression)
+                        inexpression = parsed_sql["where"]["in"]
+                        if inexpression[0] == "url":
+                            if type(inexpression[1]) == list:
+                                self.urls += inexpression[1]
+                            elif type(inexpression[1]) == dict:
+                                table = tables.tableclass(inexpression[1], sc)
+                                self.urls += map(lambda x: x["href"], table.run(sc)[0])
+                            else:
+                                self.urls += [inexpression[1]]
+                        if inexpression[0] != "url":
+                            raise Exception("FoundUnknownExpression")
+                    if 'eq' in expression:
+                        selectorexpression = parsed_sql["where"]["eq"]
+                        if selectorexpression[0] == "url":
+                            self.urls.append(selectorexpression[1])
+                if not self.urls:
+                    raise Exception("NoUrlCondition")
+                for url in self.urls:
+                    if type(url) != str:
+                        raise Exception("MalformedUrl")
+                    if not validators.url(url):
+                        raise Exception("MalformedUrl")
             else:
                 raise Exception("NotAndStatement")
         else:
             raise Exception("NotSelectStatement")
-        
+
     def run(self, sc):
         listing = sc.parallelize(self.urls)
         dirdd = listing.distinct()
@@ -74,7 +67,9 @@ class Json:
 
     @staticmethod
     def download(url, keys):
-        request = requests.get(url).json()   
-        keys
-        request[keys]
-
+        d = benedict(url, format='json')
+        outputs = []
+        for key in keys:
+            raw_keys = d[key]
+            outputs.append(raw_keys)
+        return outputs
