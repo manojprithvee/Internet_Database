@@ -25,7 +25,9 @@ def console():
 
 @app.route("/healthz")
 def healthz():
-    return jsonify({"status": "ok"})
+    response = jsonify({"status": "ok"})
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
 
 
 @app.route("/api")
@@ -42,7 +44,9 @@ def sparkpi():
     except Exception as e:
         print(e)
         return ("Oops! Error in Query. Try again after correcting the Query")
-    return jsonify(response)
+    response=jsonify(response)
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
 
 
 @app.route("/getweb")
