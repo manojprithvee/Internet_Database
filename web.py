@@ -29,6 +29,11 @@ def healthz():
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
 
+@app.route("/stocks")
+def stocks():
+    return render_template("stocks.html")
+    # return "Python Flask SparkPi server running. Add the 'sparkpi' route to this URL to invoke the app."
+
 
 @app.route("/api")
 def sparkpi():
