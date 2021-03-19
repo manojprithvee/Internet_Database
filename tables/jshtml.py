@@ -82,7 +82,7 @@ class JsHtml:
 
     @staticmethod
     def download(url, xpaths):
-        request = requests.get("http://0.0.0.0:8050/render.html?url=" + urllib.parse.quote(url))
+        request = requests.get("https://js-render-service-zju5cfpf6a-uc.a.run.app/render.html?url=" + urllib.parse.quote(url))
         dom = lh.fromstring(request.text)
         print(dom)
         outputs = []
