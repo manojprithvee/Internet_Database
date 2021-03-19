@@ -13,6 +13,7 @@ from tables.tables import *
 
 
 sc = SparkContext()
+sc.addFile("./tables",True)
 app = Flask(__name__, static_url_path='/static')
 
 
