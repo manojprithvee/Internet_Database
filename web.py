@@ -1,8 +1,5 @@
 import os
 
-import findspark
-findspark.init()
-
 import moz_sql_parser
 from flask import Flask, render_template
 from flask import request, jsonify
@@ -11,15 +8,7 @@ from pyspark import SparkContext
 
 from tables.tables import *
 
-
 sc = SparkContext()
-sc.addPyFile("./tables/__init__.py")
-sc.addPyFile("./tables/html.py")
-sc.addPyFile("./tables/xml.py")
-sc.addPyFile("./tables/yml.py")
-sc.addPyFile("./tables/tables.py")
-sc.addPyFile("./tables/jshtml.py")
-sc.addPyFile("./tables/json.py")
 app = Flask(__name__, static_url_path='/static')
 
 
