@@ -50,15 +50,13 @@
         var output = $('#output').ace({theme: 'dracula', lang: 'json'});
         $('#query-submit').on('click', function () {
             console.log("manojs")
-            output.hide()
             var word = $('#query-text').val();
-            $('#output').val('');
+            $('#output').val('Loading......');
             $('#output').data('ace').editor.ace.session.setValue("");
             if ($.trim(word) !== '') {
                 $.get('/api', {api: word}, function (data) {
                     $('#output').val(JSON.stringify(data, null, '\t'));
                     $('#output').data('ace').editor.ace.session.setValue(JSON.stringify(data, null, '\t'))
-                    output.show()
                 });
             }
         });
