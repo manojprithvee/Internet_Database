@@ -14,7 +14,7 @@ app = Flask(__name__, static_url_path='/static')
 
 @app.route("/")
 def index():
-    return "Python Flask SparkPi server running. Add the 'sparkpi' route to this URL to invoke the app."
+    return render_template("index.html")
 
 
 @app.route("/console")
@@ -32,6 +32,11 @@ def healthz():
 @app.route("/stocks")
 def stocks():
     return render_template("stocks.html")
+    # return "Python Flask SparkPi server running. Add the 'sparkpi' route to this URL to invoke the app."
+
+@app.route("/price")
+def price():
+    return render_template("price.html")
     # return "Python Flask SparkPi server running. Add the 'sparkpi' route to this URL to invoke the app."
 
 
