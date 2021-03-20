@@ -39,6 +39,11 @@ def price():
     return render_template("price.html")
     # return "Python Flask SparkPi server running. Add the 'sparkpi' route to this URL to invoke the app."
 
+@app.route("/movies")
+def movies():
+    return render_template("movies.html")
+    # return "Python Flask SparkPi server running. Add the 'sparkpi' route to this URL to invoke the app."
+
 
 @app.route("/api")
 def sparkpi():

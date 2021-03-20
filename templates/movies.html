@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3 id="loading">loading...</h3>
+<input id="titles" placeholder="title"/><input type="submit" id="update"></input>
+<script>
+
+    async function getData(title) {
+        let url = "http://"+location.host+"/api?api=select+d+from+json+where+url%3D%22https%3A%2F%2Fv2.sg.media-imdb.com%2Fsuggestion%2Ftitles%2F"+title[0]+"%2F"+title+".json%22"
+        let response = await fetch(url)
+        let data = await response.json()
+        let result = data[0].map(function(a){
+            if(a["i"]){
+                return {imageUrl:a["i"]["imageUrl"], "title":a["l"]||"", "cast":a["s"]||"","imdb":"https://www.imdb.com/title/"+a["id"]}
+            }
+            return {imageUrl:"", "title":a["l"]||"", "cast":a["s"]||"","imdb":"https://www.imdb.com/title/"+a["id"]}
+        })
+         let table = document.querySelector("table");
+        let headdata = Object.keys(result[0]);
+        table.innerHTML="";
+        generateTableHead(table, headdata);
+        generateTable(table, result);
+        loading()
+    }
+    function generateTableHead(table, data) {
+        let thead = table.createTHead();
+        let row = thead.insertRow();
+        for (let key of data) {
+            if(key=="imdb"){
+                continue
+            }
+            let th = document.createElement("th");
+            let text = document.createTextNode(key);
+            th.appendChild(text);
+            row.appendChild(th);
+        }
+    }
+
+    function generateTable(table, data) {
+        for (let element of data) {
+            let row = table.insertRow();
+            for (key in element) {
+                let cell = row.insertCell();
+                let appendElement=document.createElement("a")
+                appendElement.target="_blank"
+                appendElement.href=element["imdb"]
+                if (key == "imageUrl"){
+
+                    image = document.createElement('img');
+                    image.width=100
+                    image.src = element[key]
+                    appendElement.appendChild(image)
+                }
+                else if(key=="imdb"){
+                    continue
+                }
+                else{
+                    text = document.createTextNode(element[key]);
+                    appendElement.appendChild(text)
+                }
+                cell.appendChild(appendElement);
+            }
+        }
+    }
+    function loading() {
+			var x = document.getElementById("loading");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+    }
+    document.getElementById('update').addEventListener('click', function () {
+			loading()
+			var title = document.getElementById('titles').value;
+			getData(title)
+    });
+    getData("zack")
+</script>
+<table>
+
+</table>
+</body>
+</html>
