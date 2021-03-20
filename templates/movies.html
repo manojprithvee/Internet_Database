@@ -10,11 +10,8 @@
 <script>
 
     async function getData(title) {
-        if(title===""){
-            loading()
-            return
-        }
-        let url = "http://"+location.host+"/api?api=select+d+from+json+where+url%3D%22https%3A%2F%2Fv2.sg.media-imdb.com%2Fsuggestion%2Ftitles%2F"+title[0]+"%2F"+title+".json%22"
+        try {
+            let url = "http://"+location.host+"/api?api=select+d+from+json+where+url%3D%22https%3A%2F%2Fv2.sg.media-imdb.com%2Fsuggestion%2Ftitles%2F"+title[0]+"%2F"+title+".json%22"
         let response = await fetch(url)
         let data = await response.json()
         let result = data[0].map(function(a){
@@ -28,7 +25,13 @@
         table.innerHTML="";
         generateTableHead(table, headdata);
         generateTable(table, result);
-        loading()
+        } catch (e) {
+
+        } finally {
+            loading()
+        }
+
+
     }
     function generateTableHead(table, data) {
         let thead = table.createTHead();
