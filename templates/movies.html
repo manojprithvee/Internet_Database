@@ -68,10 +68,13 @@
     }
     function loading() {
 			var x = document.getElementById("loading");
+			var y = document.getElementById("update");
 			if (x.style.display === "none") {
 				x.style.display = "block";
+				y.style.display = "block";
 			} else {
 				x.style.display = "none";
+				y.style.display = "none";
 			}
     }
     document.getElementById('update').addEventListener('click', function () {
