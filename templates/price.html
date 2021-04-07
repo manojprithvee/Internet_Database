@@ -7,7 +7,7 @@
 <body>
 <script>
     async function getData() {
-        let url = "http://"+location.host+"/api?api=select+%0A%22%2Fhtml%2Fbody%2Fdiv%5B6%5D%2Fmain%2Fdiv%5B1%5D%2Fdiv%5B1%5D%2Fsection%2Fdiv%5B1%5D%2Fdiv%5B2%5D%2Fdiv%2Fdiv%2Fdiv%2Fh1%22%2C%0A%22%2Fhtml%2Fbody%2Fdiv%5B6%5D%2Fmain%2Fdiv%5B1%5D%2Fdiv%5B1%5D%2Fsection%2Fdiv%5B1%5D%2Fdiv%5B2%5D%2Fdiv%2Fdiv%2Fdiv%2Fdiv%5B1%5D%2Fspan%2Fspan%22+%0Afrom+html+%0Awhere+url+in+(%0A++++select+%0A++++%22%2F%2F*%5B%40id%3D%27shopify-section-collection-template%27%5D%2Fsection%2Fdiv%5B2%5D%2Fdiv%2Fdiv%2Fdiv%2Fdiv%2Fdiv%2Fdiv%2Fdiv%2Fa%5B1%5D%2F%40href%22+%0A++++from+html+where+url+in+(%0A++++++++%22https%3A%2F%2Fwww.lttstore.com%2Fcollections%2Fall%3Fpage%3D1%22%2C%0A++++++++%22https%3A%2F%2Fwww.lttstore.com%2Fcollections%2Fall%3Fpage%3D2%22%0A++++)+and+%0A++++selector%3Dxpath%0A)+and+%0Aselector%3Dxpath";
+        let url = "http://"+location.host+"/api?api=SELECT+%22%2Fhtml%2Fbody%2Fdiv%5B6%5D%2Fmain%2Fdiv%5B1%5D%2Fsection%2Fdiv%5B1%5D%2Fdiv%5B2%5D%2Fdiv%2Fdiv%2Fdiv%2Fh1%22%2C+%0A%22%2Fhtml%2Fbody%2Fdiv%5B6%5D%2Fmain%2Fdiv%5B1%5D%2Fsection%2Fdiv%5B1%5D%2Fdiv%5B2%5D%2Fdiv%2Fdiv%2Fdiv%2Fdiv%5B1%5D%2Fspan%2Fspan%22+%0AFROM+++html+%0AWHERE++url+IN+(SELECT+%0A%22%2F%2F*%5B%40id%3D%27shopify-section-collection-template%27%5D%2Fsection%2Fdiv%5B2%5D%2Fdiv%2Fdiv%2Fdiv%2Fdiv%2Fdiv%2Fdiv%2Fdiv%2Fa%5B1%5D%2F%40href%22+%0A+FROM+++html+%0A+WHERE++url+IN+(+%22https%3A%2F%2Fwww.lttstore.com%2Fcollections%2Fall%3Fpage%3D1%22%2C+%0A+++++++++++++++++%22https%3A%2F%2Fwww.lttstore.com%2Fcollections%2Fall%3Fpage%3D2%22+)+%0A++++++++AND+selector+%3D+xpath)+%0AAND+selector+%3D+xpath+"
         let response = await fetch(url)
         let data = await response.json()
         names = data[0].map(x => x["text"])
