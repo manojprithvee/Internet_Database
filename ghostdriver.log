@@ -1,5 +1,271 @@
-[INFO  - 2020-05-11T19:06:56.317Z] GhostDriver - Main - running on port 59941
-[INFO  - 2020-05-11T19:06:56.558Z] Session [95415b70-93ba-11ea-899b-6fffda92a312] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
-[INFO  - 2020-05-11T19:06:56.558Z] Session [95415b70-93ba-11ea-899b-6fffda92a312] - page.customHeaders:  - {}
-[INFO  - 2020-05-11T19:06:56.558Z] Session [95415b70-93ba-11ea-899b-6fffda92a312] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
-[INFO  - 2020-05-11T19:06:56.558Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 95415b70-93ba-11ea-899b-6fffda92a312
+[INFO  - 2021-04-27T00:44:01.635Z] GhostDriver - Main - running on port 55679
+[INFO  - 2021-04-27T00:44:02.639Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2021-04-27T00:44:02.639Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.customHeaders:  - {}
+[INFO  - 2021-04-27T00:44:02.639Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2021-04-27T00:44:02.639Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: a98559b0-a6f1-11eb-9909-938007fc1c7c
+[ERROR - 2021-04-27T00:44:04.284Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:04.285Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:05.034Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: TypeError: null is not an object (evaluating 'e.state.path')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:05.034Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/s/files/1/0058/4538/5314/t/3/assets/theme.min.js?v=5218450095559523351:3)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:05.670Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: ReferenceError: Can't find variable: $
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:05.671Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  global code (https://bundle.thimatic-apps.com/theme_files/style.php?shop=linus-tech-tips-store.myshopify.com:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:05.881Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:05.881Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:05.883Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: TypeError: null is not an object (evaluating 'e.state.path')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:05.883Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/s/files/1/0058/4538/5314/t/3/assets/theme.min.js?v=5218450095559523351:3)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:06.666Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:06.667Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:07.400Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:07.400Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:07.999Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:08.000Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:08.818Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:08.818Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:09.465Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:09.465Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:10.099Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:10.099Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:10.340Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'e[Symbol.iterator]()')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:10.340Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/payment-sheet/assets/latest/spb.en.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:11.304Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:11.304Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:11.945Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:11.945Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:12.671Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:12.671Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:13.566Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:13.566Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:14.553Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:14.553Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:15.330Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:15.330Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:16.057Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:16.057Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:16.831Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:16.831Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:17.384Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:17.384Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:18.049Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:18.049Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:18.461Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:18.461Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:18.963Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:18.963Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:19.438Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:19.438Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:19.991Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:19.991Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:20.528Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:20.528Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:21.047Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:21.047Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:21.612Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:21.612Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:22.352Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:22.352Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:23.224Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:23.224Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:24.133Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:24.133Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:24.819Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:24.819Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:25.388Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:25.389Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:25.916Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:25.916Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:26.428Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:26.428Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:26.836Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:26.836Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:27.308Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not a constructor (evaluating 'this.name.includes("Safari")')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2021-04-27T00:44:27.308Z] Session [a98559b0-a6f1-11eb-9909-938007fc1c7c] - page.onError - stack:
+  (anonymous function) (https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=20210208:1)
+
+  phantomjs://platform/console++.js:263 in error
